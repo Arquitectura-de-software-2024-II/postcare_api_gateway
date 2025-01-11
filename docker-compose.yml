@@ -36,15 +36,6 @@ services:
     depends_on:
       - seguimiento_postoperatorio
       - registro_usuario
-      - postcare_fe
-    networks:
-      - backend
-
-  postcare_fe:
-    image: jeramirezca/postcare_fe:v2
-    container_name: postcare_fe
-    ports:
-      - "3000:3000" 
     networks:
       - backend
 
