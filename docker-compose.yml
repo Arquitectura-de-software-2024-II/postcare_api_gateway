@@ -1,6 +1,6 @@
 services:
   seguimiento_postoperatorio:
-    image: seguimiento_postoperatorio_ms:latest
+    image: ymoras/seguimiento_postoperatorio_ms:latest
     container_name: seguimiento_postoperatorio
     ports:
       - "8081:8081"
@@ -24,16 +24,15 @@ services:
     image: nginx:latest
     container_name: api_gateway
     ports:
-      - "8082:80"    # Exposición del puerto HTTP (80) como 8080 en el host
-      - "443:443"   # Exposición del puerto HTTPS (443) como 8443 en el host
+      - "8080:80"    # Exposición del puerto HTTP (80) como 8080 en el host
     volumes:
       - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro 
-      - ./etc/nginx/api_conf.d:/etc/nginx/api_conf.d:ro
-      - ./etc/nginx/api_gateway.conf:/etc/nginx/api_gateway.conf:ro
-      - ./etc/nginx/api_json_errors.conf:/etc/nginx/api_json_errors.conf:ro
-      - ./etc/nginx/api_keys.conf:/etc/nginx/api_keys.conf:ro
-      - ./certs/postcareun.io.crt:/etc/ssl/certs/postcareun.io.crt:ro
-      - ./certs/postcareun.io.key:/etc/ssl/certs/postcareun.io.key:ro
+      # - ./etc/nginx/api_conf.d:/etc/nginx/api_conf.d:ro
+      # - ./etc/nginx/api_gateway.conf:/etc/nginx/api_gateway.conf:ro
+      # - ./etc/nginx/api_json_errors.conf:/etc/nginx/api_json_errors.conf:ro
+      # - ./etc/nginx/api_keys.conf:/etc/nginx/api_keys.conf:ro
+      # - ./certs/postcareun.io.crt:/etc/ssl/certs/postcareun.io.crt:ro
+      # - ./certs/postcareun.io.key:/etc/ssl/certs/postcareun.io.key:ro
     depends_on:
       - seguimiento_postoperatorio
       - registro_usuario
@@ -42,7 +41,7 @@ services:
       - backend
 
   postcare_fe:
-    image: jeramirezca/postcare_fe
+    image: jeramirezca/postcare_fe:v2
     container_name: postcare_fe
     ports:
       - "3000:3000" 
