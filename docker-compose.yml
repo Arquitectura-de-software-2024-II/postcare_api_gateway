@@ -27,7 +27,15 @@ services:
       - "8003:8003" 
     networks:
       - backend
-
+  educativo_ms:
+    image: andrurachi/postcare_educativo_ms:open-access
+    container_name: educativo
+    environment:
+    - MONGODB_URI=mongodb+srv://andrurachi:uzTOQqTxeevTuWmu@postcareeducativodb.4pnol.mongodb.net/?retryWrites=true&w=majority&appName=postcareEducativoDB
+    ports:
+    - "4000:4000"
+    networks:
+      - backend
   nginx:
     image: nginx:latest
     container_name: api_gateway
@@ -40,7 +48,6 @@ services:
       - registro_usuario
     networks:
       - backend
-
 networks:
   backend:
     driver: bridge
