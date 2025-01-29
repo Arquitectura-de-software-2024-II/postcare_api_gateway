@@ -4,16 +4,11 @@ services:
     container_name: seguimiento_postoperatorio
     ports:
       - "8081:8081"
-    environment:
-      - MONGO_URI=mongodb+srv://root:AAJJY52024-2@cluster0.ocbp0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      - MONGO_DATABASE=postcare_seguimiento_postoperatorio_db
-      - SERVER_PORT=8081
-      - SPRING_APPLICATION_NAME=seguimiento_postoperatorio_ms
     networks:
       - backend
 
   registro_usuario:
-    image: amoralesco/postcare_registro_usuario_ms:v4
+    image: amoralesco/postcare_registro_usuario_ms:latest
     container_name: registro_usuario
     ports:
       - "8000:8000" 
@@ -24,7 +19,7 @@ services:
     image: amoralesco/postcare_triage_ms:v1
     container_name: triage
     ports:
-      - "8003:8003" 
+      - "8001:8000" 
     networks:
       - backend
 
@@ -38,6 +33,7 @@ services:
     depends_on:
       - seguimiento_postoperatorio
       - registro_usuario
+      - triage
     networks:
       - backend
 
