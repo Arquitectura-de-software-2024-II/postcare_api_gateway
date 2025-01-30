@@ -23,7 +23,7 @@ services:
     networks:
       - backend
   educativo_ms:
-    image: postcare_educativo_ms:v7  #aca tal vez toca con usuario
+    image: andrurachi/postcare_educativo_ms:v7  #aca tal vez toca con usuario
     container_name: educativo
     
     ports:
