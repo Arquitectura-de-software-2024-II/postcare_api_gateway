@@ -28,10 +28,9 @@ services:
     networks:
       - backend
   educativo_ms:
-    image: andrurachi/postcare_educativo_ms:open-access
+    image: postcare_educativo_ms:v7  #aca tal vez toca con usuario
     container_name: educativo
-    environment:
-    - MONGODB_URI=mongodb+srv://andrurachi:uzTOQqTxeevTuWmu@postcareeducativodb.4pnol.mongodb.net/?retryWrites=true&w=majority&appName=postcareEducativoDB
+    
     ports:
     - "4000:4000"
     networks:
