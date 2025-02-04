@@ -23,9 +23,9 @@ services:
     networks:
       - backend
   educativo_ms:
-    image: andrurachi/postcare_educativo_ms:v7  #aca tal vez toca con usuario
+    image: jvelozag/postcare_educativo_ms:v3  #aca tal vez toca con usuario
     container_name: educativo
-    
+
     ports:
     - "4000:4000"
     networks:
