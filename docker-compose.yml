@@ -1,48 +1,54 @@
-services:
-  seguimiento_postoperatorio:
-    image: ymoras/seguimiento_postoperatorio_ms:latest
-    container_name: seguimiento_postoperatorio
-    ports:
-      - "8081:8081"
-    networks:
-      - backend
+# services:
+#   seguimiento_postoperatorio:
+#     image: ymoras/seguimiento_postoperatorio_ms:latest
+#     container_name: seguimiento_postoperatorio
+#     ports:
+#       - "8081:8081"
+#     networks:
+#       - backend
 
-  registro_usuario:
-    image: amoralesco/postcare_registro_usuario_ms:latest
-    container_name: registro_usuario
-    ports:
-      - "8000:8000" 
-    networks:
-      - backend
+#   registro_usuario:
+#     image: amoralesco/postcare_registro_usuario_ms:latest
+#     container_name: registro_usuario
+#     ports:
+#       - "8000:8000" 
+#     networks:
+#       - backend
 
-  triage:
-    image: amoralesco/postcare_triage_ms:v1
-    container_name: triage
-    ports:
-      - "8001:8000" 
-    networks:
-      - backend
-  educativo_ms:
-    image: jvelozag/postcare_educativo_ms:v3  #aca tal vez toca con usuario
-    container_name: educativo
-
-    ports:
-    - "4000:4000"
-    networks:
-      - backend
-  nginx:
-    image: nginx:latest
-    container_name: api_gateway
-    ports:
-      - "8080:80"    
-    volumes:
-      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro 
-    depends_on:
-      - seguimiento_postoperatorio
-      - registro_usuario
-      - triage
-    networks:
-      - backend
-networks:
-  backend:
-    driver: bridge
+#   triage:
+#     image: amoralesco/postcare_triage_ms:v1
+#     container_name: triage
+#     ports:
+#       - "8001:8000" 
+#     networks:
+#       - backend
+#   educativo_ms:
+#     image: jvelozag/postcare_educativo_ms:v3  #aca tal vez toca con usuario
+#     container_name: educativo
+#     ports:
+#     - "4000:4000"
+#     networks:
+#       - backend
+#   notificaiones_ms:
+#     image: andrurachi/postcare_notificaciones_ms:v1  #aca tal vez toca con usuario
+#     container_name: notificaciones
+#     ports:
+#     - "4002:4002"
+#     networks:
+#       - backend      
+#   nginx:
+#     image: nginx:latest
+#     container_name: api_gateway
+#     ports:
+#       - "8080:80"    
+#     volumes:
+#       - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro 
+#     depends_on:
+#       - seguimiento_postoperatorio
+#       - registro_usuario
+#       - triage
+#     networks:
+#       - backend
+# networks:
+#   backend:
+#     driver: bridge
